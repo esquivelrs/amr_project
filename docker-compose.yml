@@ -63,7 +63,7 @@ services:
 
     volumes:
       # Mount the source code
-      - ./amr_repo:/home/ubuntu/:rw 
+      - ./amr:/home/ubuntu/:rw 
 
     user: ${USERNAME:-devuser}
     command: bash -c "sudo chmod 777 -R /home/ubuntu/ && exec sleep infinity"
