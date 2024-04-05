@@ -1,0 +1,7 @@
+ts1_simple_command
+/home/ubuntu/devel/.private/ts1_simple_command/cmake.lock /home/ubuntu/devel/./cmake.lock
+/home/ubuntu/devel/.private/ts1_simple_command/share/ts1_simple_command/cmake/ts1_simple_commandConfig.cmake /home/ubuntu/devel/share/ts1_simple_command/cmake/ts1_simple_commandConfig.cmake
+/home/ubuntu/devel/.private/ts1_simple_command/share/ts1_simple_command/cmake/ts1_simple_commandConfig-version.cmake /home/ubuntu/devel/share/ts1_simple_command/cmake/ts1_simple_commandConfig-version.cmake
+/home/ubuntu/devel/.private/ts1_simple_command/lib/ts1_simple_command/square_wave_surge_command.py /home/ubuntu/devel/lib/ts1_simple_command/square_wave_surge_command.py
+/home/ubuntu/devel/.private/ts1_simple_command/lib/ts1_simple_command/cmake.lock /home/ubuntu/devel/lib/ts1_simple_command/cmake.lock
+/home/ubuntu/devel/.private/ts1_simple_command/lib/pkgconfig/ts1_simple_command.pc /home/ubuntu/devel/lib/pkgconfig/ts1_simple_command.pc

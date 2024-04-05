@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/devel/.private/amr_prj
+
+Name: amr_prj
+Description: Description of amr_prj
+Version: 0.0.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: roscpp std_msgs geometry_msgs message_runtime

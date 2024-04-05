@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/install
+
+Name: ts1_simple_command
+Description: Description of ts1_simple_command
+Version: 0.0.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: roscpp std_msgs geometry_msgs message_runtime

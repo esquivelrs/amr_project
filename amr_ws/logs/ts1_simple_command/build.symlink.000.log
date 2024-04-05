@@ -1,0 +1,5 @@
+Symlinking /home/ubuntu/devel/share/ts1_simple_command/cmake/ts1_simple_commandConfig.cmake
+Symlinking /home/ubuntu/devel/share/ts1_simple_command/cmake/ts1_simple_commandConfig-version.cmake
+Symlinking /home/ubuntu/devel/lib/ts1_simple_command/square_wave_surge_command.py
+Symlinking /home/ubuntu/devel/lib/ts1_simple_command/cmake.lock
+Symlinking /home/ubuntu/devel/lib/pkgconfig/ts1_simple_command.pc

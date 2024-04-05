@@ -1,0 +1,5 @@
+Symlinking /home/ubuntu/devel/share/amr_prj/cmake/amr_prjConfig-version.cmake
+Symlinking /home/ubuntu/devel/share/amr_prj/cmake/amr_prjConfig.cmake
+Symlinking /home/ubuntu/devel/lib/pkgconfig/amr_prj.pc
+Symlinking /home/ubuntu/devel/lib/amr_prj/cmake.lock
+Symlinking /home/ubuntu/devel/lib/amr_prj/imu_analysis.py

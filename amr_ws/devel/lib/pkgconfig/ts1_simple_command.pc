@@ -1,0 +1,1 @@
+/home/ubuntu/devel/.private/ts1_simple_command/lib/pkgconfig/ts1_simple_command.pc
