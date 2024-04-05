@@ -63,12 +63,12 @@ services:
 
     volumes:
       # Mount the source code
-      - ./amr_ws:/home/ubuntu/:rw 
+      - ./ros_packages:/overlay_ws/src/:rw 
 
     user: ${USERNAME:-devuser}
-    command: bash -c "sudo chmod 777 -R /home/ubuntu/ && exec sleep infinity"
+    command: bash -c "sudo chmod 777 -R /overlay_ws/ && exec sleep infinity"
   
   #viz:
     #extends: dev
-    #command: rviz -d /home/ubuntu/src/some_folder/rviz.rviz  
+    #command: rviz -d /overlay_ws/src/some_folder/rviz.rviz  
   

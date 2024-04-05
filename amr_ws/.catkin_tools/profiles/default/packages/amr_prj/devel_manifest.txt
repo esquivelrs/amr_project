@@ -1,7 +1,0 @@
-amr_prj
-/home/ubuntu/devel/.private/amr_prj/cmake.lock /home/ubuntu/devel/./cmake.lock
-/home/ubuntu/devel/.private/amr_prj/share/amr_prj/cmake/amr_prjConfig-version.cmake /home/ubuntu/devel/share/amr_prj/cmake/amr_prjConfig-version.cmake
-/home/ubuntu/devel/.private/amr_prj/share/amr_prj/cmake/amr_prjConfig.cmake /home/ubuntu/devel/share/amr_prj/cmake/amr_prjConfig.cmake
-/home/ubuntu/devel/.private/amr_prj/lib/pkgconfig/amr_prj.pc /home/ubuntu/devel/lib/pkgconfig/amr_prj.pc
-/home/ubuntu/devel/.private/amr_prj/lib/amr_prj/cmake.lock /home/ubuntu/devel/lib/amr_prj/cmake.lock
-/home/ubuntu/devel/.private/amr_prj/lib/amr_prj/imu_analysis.py /home/ubuntu/devel/lib/amr_prj/imu_analysis.py
