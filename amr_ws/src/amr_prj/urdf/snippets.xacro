@@ -183,7 +183,7 @@
   <xacro:macro name="bluerov2_sss"
     params="namespace suffix parent_link topic mass update_rate
       samples fov range_min range_max range_stddev mesh
-      *inertia *origin *visual">
+      *inertia *origin">
     <!-- Sensor link -->
     <link name="${namespace}/sonar${suffix}_link">
       <inertial>
@@ -192,7 +192,6 @@
         <origin xyz="0 0 0" rpy="0 0 0" />
       </inertial>
 
-      <xacro:insert_block name="visual" />
       <xacro:no_collision/>
     </link>
 

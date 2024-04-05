@@ -46,7 +46,8 @@
   <!-- Mount a sonar -->
 
   <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sonar_snippets.xacro" />
-  <!-- <xacro:forward_multibeam_sonar_m450_130 namespace="$(arg namespace)" parent_link="$(arg namespace)/base_link">
+  <xacro:include filename="$(find amr_prj)/urdf/snippets.xacro" />
+  <!-- <xacro:forward_multibeam_sonar_m450_130 namespace="" parent_link="$(arg namespace)/base_link">
     <origin xyz="1.4 0 0.65" rpy="0 0 0"/>
   </xacro:forward_multibeam_sonar_m450_130> -->
 
@@ -59,13 +60,13 @@
     mass="0.1"
     update_rate="15"
     samples="100"
-    fov="30"
+    fov="2.27"
     range_min="0.01"
-    range_max="2.27"
+    range_max="10.0"
     range_stddev="0.005"
     mesh="">
     <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1"/>
-    <origin xyz="0.2 0 0" rpy="0 0 0"/>
+    <origin xyz="0.2 0 -0.05" rpy="0 0 0"/>
   </xacro:bluerov2_sss>
 
 <!--
