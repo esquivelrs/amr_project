@@ -55,6 +55,8 @@ Final project for course 34763 Autonomous Marine Robotics
 
 Install docker and docker compose
 
+install docker and docker compose
+
 Docker:
 https://docs.docker.com/engine/install/
 
