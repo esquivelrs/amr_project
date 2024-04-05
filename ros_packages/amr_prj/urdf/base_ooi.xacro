@@ -38,12 +38,12 @@
     the mesh pose will have to be corrected below in the <visual> block.
     Open the meshes for the RexROV vehicle in Blender to see an example on the mesh placement.
   -->
-  <xacro:property name="visual_mesh_file" value="file://$(find amr_prj)/meshes/duck.dae"/>
+  <xacro:property name="visual_mesh_file" value="file://$(find amr_prj)/meshes/sphere.dae"/>
 
   <!-- Collision geometry mesh, usually in STL format (it is recommended to keep
   this geometry as simple as possible to improve the performance the physics engine
   regarding the computation of collision forces) -->
-  <!-- <xacro:property name="collision_mesh_file" value="file://$(find bluerov2_description)/meshes/bluerov2_noprop.stl"/> -->
+  <xacro:property name="collision_mesh_file" value="file://$(find amr_prj)/meshes/sphere.stl"/>
 
   <!-- Vehicle macro -->
   <!-- <xacro:macro name="bluerov2_base" params="namespace debug *gazebo"> -->
@@ -75,26 +75,33 @@
         <visual>
           <origin xyz="0 0 0" rpy="1.5708 0 0"/>
           <geometry>
-            <mesh filename="${visual_mesh_file}" scale="0.5 0.5 0.5" />
+            <mesh filename="${visual_mesh_file}" scale="1 1 1" />
           </geometry>
         </visual>
+
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <geometry>
+            <mesh filename="${collision_mesh_file}" scale="1 1 1" />
+          </geometry>
+        </collision>
 
         <!-- <visual>
           <origin xyz="0 0 0" rpy="1 0 0"/>
           <geometry>
             <sphere radius="0.5"/>
           </geometry>
-          <material name="blue">
-            <color rgba="0 0 1 1"/>
+          <material name="red">
+            <color rgba="1 0 0 1"/>
           </material>
         </visual> -->
 
-        <collision>
+        <!-- <collision>
           <origin xyz="0 0 0" rpy="0 0 0"/>
           <geometry>
-            <sphere radius="0.5"/>
+            <sphere radius="0.2"/>
           </geometry>
-        </collision>
+        </collision> -->
 
       </link>
 
