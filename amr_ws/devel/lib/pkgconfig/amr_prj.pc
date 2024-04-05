@@ -1,1 +1,0 @@
-/home/ubuntu/devel/.private/amr_prj/lib/pkgconfig/amr_prj.pc

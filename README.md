@@ -18,3 +18,23 @@ Run the container:
 Connect to the container:
 
 `docker exec -it amr_project-dev-1 bash`
+
+# ROS commands
+
+```bash
+catkin build
+source setup/devel.bash
+```
+
+```bash
+roslaunch amr_prj run.launch 
+```
+
+```bash
+roslaunch uuv_teleop uuv_keyboard_teleop.launch uuv_name:=bluerov2
+```
+
+
+```bash
+
+```

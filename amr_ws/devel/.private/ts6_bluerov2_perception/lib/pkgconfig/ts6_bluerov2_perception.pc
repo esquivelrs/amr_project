@@ -1,8 +1,0 @@
-prefix=/home/ubuntu/devel/.private/ts6_bluerov2_perception
-
-Name: ts6_bluerov2_perception
-Description: Description of ts6_bluerov2_perception
-Version: 0.0.1
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: roscpp std_msgs geometry_msgs message_runtime

@@ -68,16 +68,16 @@ ENTRYPOINT [ "/entrypoint.sh" ]
 FROM base AS overlay
 # Create an overlay Catkin workspace
 RUN source /opt/ros/noetic/setup.bash \
- && mkdir -p /home/ubuntu/src \
- && cd /home/ubuntu \ 
+ && mkdir -p /overlay_ws/src \
+ && cd /overlay_ws \ 
  && catkin init
-#COPY ./some_folder/ /home/ubuntu/src/some_folder/
-#COPY ./some_other_folder/ /home/ubuntu/src/some_other_folder/
+#COPY ./some_folder/ /overlay_ws/src/some_folder/
+#COPY ./some_other_folder/ /overlay_ws/src/some_other_folder/
 RUN source /opt/ros/noetic/setup.bash \
- && catkin build -j2
+ && catkin build
 
 # Set up the work directory and entrypoint
-WORKDIR /home/ubuntu
+WORKDIR /overlay_ws
 COPY ./docker/entrypoint.sh /
 ENTRYPOINT [ "/entrypoint.sh" ]
 
@@ -88,7 +88,7 @@ ENTRYPOINT [ "/entrypoint.sh" ]
 FROM overlay as dev
 
 # Dev container arguments
-ARG USERNAME=ubuntu
+ARG USERNAME=devuser
 ARG UID=1000
 ARG GID=${UID}
 
@@ -96,13 +96,13 @@ ARG GID=${UID}
 RUN apt-get update && apt-get install -y --no-install-recommends gdb gdbserver nano
 
 
-RUN git clone https://gitlab.gbar.dtu.dk/dtu-asl/courses/34763-autonomous-marine-robotics && \
-    cd 34763-autonomous-marine-robotics && git remote rename origin course_repo
+# RUN git clone https://gitlab.gbar.dtu.dk/dtu-asl/courses/34763-autonomous-marine-robotics && \
+#     cd 34763-autonomous-marine-robotics && git remote rename origin course_repo
 
-RUN cd /home/ubuntu/34763-autonomous-marine-robotics/ros_ws && \
-    /bin/bash -c "source /opt/ros/noetic/setup.bash && catkin_make -j2 -l2"
+# RUN cd /overlay_ws/34763-autonomous-marine-robotics/ros_ws && \
+#     /bin/bash -c "source /opt/ros/noetic/setup.bash && catkin_make -j2 -l2"
 
-RUN echo "source /home/ubuntu/34763-autonomous-marine-robotics/ros_ws/devel/setup.bash" >> /home/ubuntu/.bashrc
+# RUN echo "source /overlay_ws/34763-autonomous-marine-robotics/ros_ws/devel/setup.bash" >> /overlay_ws/.bashrc
 
 ARG CONDA_URL=https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 ARG PATH="/root/miniconda3/bin:${PATH}"
@@ -122,7 +122,7 @@ RUN groupadd --gid $GID $USERNAME \
  && chown -R ${UID}:${GID} /home/${USERNAME}
 
 # Set the ownership of the overlay workspace to the new user
-RUN chown -R ${UID}:${GID} /home/ubuntu/ /underlay_ws/
+RUN chown -R ${UID}:${GID} /underlay_ws/ /overlay_ws/
 
 
 # Set the user and source entrypoint in the user's .bashrc file
