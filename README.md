@@ -19,6 +19,7 @@ Connect to the container:
 
 `docker exec -it amr_project-dev-1 bash`
 
+# ROS commands
 
 ```bash
 catkin build
