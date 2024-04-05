@@ -64,6 +64,7 @@ services:
     volumes:
       # Mount the source code
       - ./ros_packages:/overlay_ws/src/:rw 
+      - ./shell_scripts:/overlay_ws/:rwx
 
     user: ${USERNAME:-devuser}
     command: bash -c "sudo chmod 777 -R /overlay_ws/ && exec sleep infinity"

@@ -32,9 +32,5 @@ roslaunch amr_prj run.launch
 
 ```bash
 roslaunch uuv_teleop uuv_keyboard_teleop.launch uuv_name:=bluerov2
-```
-
-
-```bash
-
+roslaunch uuv_teleop uuv_keyboard_teleop.launch uuv_name:=ooi
 ```
