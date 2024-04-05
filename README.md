@@ -81,7 +81,7 @@ docker exec -it amr_project-dev-1 bash
 
 To give permission to python files in the container use the shell script
 ```bash
-./give_permission.sh
+./shell_scripts/give_permission.sh
 ```
 
 ```bash
