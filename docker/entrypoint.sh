@@ -13,9 +13,9 @@ then
 fi
 
 # Source the overlay workspace, if built
-if [ -f /home/ubuntu/34763-autonomous-marine-robotics/ros_ws/devel/setup.bash ]
+if [ -f /overlay_ws/devel/setup.bash ]
 then
-  source /home/ubuntu/34763-autonomous-marine-robotics/ros_ws/devel/setup.bash
+  source /overlay_ws/devel/setup.bash
   echo "Sourced overlay workspace"
 fi
 

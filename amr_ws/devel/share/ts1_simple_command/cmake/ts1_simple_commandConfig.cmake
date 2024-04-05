@@ -1,1 +1,0 @@
-/home/ubuntu/devel/.private/ts1_simple_command/share/ts1_simple_command/cmake/ts1_simple_commandConfig.cmake
