@@ -1,6 +1,7 @@
 # AMR project
 
 install docker and docker compose
+
 Docker:
 https://docs.docker.com/engine/install/
 
@@ -23,7 +24,7 @@ Connect to the container:
 
 ```bash
 catkin build
-source setup/devel.bash
+source devel/setup.bash
 ```
 
 ```bash
