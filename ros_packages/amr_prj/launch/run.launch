@@ -66,9 +66,9 @@
     </include> 
 
 
-    <node pkg="amr_prj" type="PositionControl.py" name="position_control"
+    <!-- <node pkg="amr_prj" type="PositionControl.py" name="position_control"
           output="screen">
-    </node>
+    </node> -->
 
     <!-- <node pkg="tf" type="static_transform_publisher" name="world0_to_world_tf_publisher" args="0 0 -23 0 0 0 world odom 100" /> -->
     
