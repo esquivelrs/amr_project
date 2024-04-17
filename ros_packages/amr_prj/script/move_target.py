@@ -21,7 +21,7 @@ def ooi_simple_move_publisher():
     while not rospy.is_shutdown():
 
         twist_msg = Twist()
-        twist_msg.linear.x = speed  # Initial linear velocity
+        twist_msg.linear.y = speed  # Initial linear velocity
 
         # Publish initial velocity for T/2 seconds
         start_time = rospy.Time.now()
@@ -30,13 +30,34 @@ def ooi_simple_move_publisher():
             rate.sleep()
 
         # Change linear velocity to -speed
-        twist_msg.linear.x = -speed
+        twist_msg.linear.y = -speed
 
         # Publish negative velocity for T/2 seconds
         start_time = rospy.Time.now()
         while (rospy.Time.now() - start_time).to_sec() < period/2:
             pub.publish(twist_msg)
             rate.sleep()
+
+        twist_msg.linear.y = 0 
+
+        twist_msg.linear.z = speed  # Initial linear velocity
+
+        # Publish initial velocity for T/2 seconds
+        start_time = rospy.Time.now()
+        while (rospy.Time.now() - start_time).to_sec() < period/4:
+            pub.publish(twist_msg)
+            rate.sleep()
+
+        # Change linear velocity to -speed
+        twist_msg.linear.z = -speed
+
+        # Publish negative velocity for T/2 seconds
+        start_time = rospy.Time.now()
+        while (rospy.Time.now() - start_time).to_sec() < period/4:
+            pub.publish(twist_msg)
+            rate.sleep()
+        
+        
 
 
 

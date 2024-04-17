@@ -65,6 +65,16 @@
         <arg name="use_ned_frame" value="$(arg use_ned_frame)"/> 
     </include> 
 
+
+    <node pkg="amr_prj" type="PositionControl.py" name="position_control"
+          output="screen">
+    </node>
+
+    <node pkg="segmentation" type="segmentation_node.py" name="segmentation_node" output="screen">
+        <param name="lower_mask" value="[0, 2, 0]" type="str"/>
+        <param name="upper_mask" value="[10, 200, 10]" type="str"/>
+    </node>
+
     <!-- <node pkg="tf" type="static_transform_publisher" name="world0_to_world_tf_publisher" args="0 0 -23 0 0 0 world odom 100" /> -->
     
     <!-- Start RViz  -->
