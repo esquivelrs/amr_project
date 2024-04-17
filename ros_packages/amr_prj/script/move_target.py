@@ -38,6 +38,27 @@ def ooi_simple_move_publisher():
             pub.publish(twist_msg)
             rate.sleep()
 
+        twist_msg.linear.y = 0 
+
+        twist_msg.linear.z = speed  # Initial linear velocity
+
+        # Publish initial velocity for T/2 seconds
+        start_time = rospy.Time.now()
+        while (rospy.Time.now() - start_time).to_sec() < period/4:
+            pub.publish(twist_msg)
+            rate.sleep()
+
+        # Change linear velocity to -speed
+        twist_msg.linear.z = -speed
+
+        # Publish negative velocity for T/2 seconds
+        start_time = rospy.Time.now()
+        while (rospy.Time.now() - start_time).to_sec() < period/4:
+            pub.publish(twist_msg)
+            rate.sleep()
+        
+        
+
 
 
 if __name__ == '__main__':

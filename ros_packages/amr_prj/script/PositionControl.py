@@ -42,7 +42,7 @@ class PositionControlNode:
 
 
         # Error angles
-        e_rot = np.array([0.0,0.0, math.atan2(dy, dx)])
+        e_rot = np.array([0.0,math.atan2(dz, dx), math.atan2(dy, dx)])
 
         # Create a Twist message
 
