@@ -127,5 +127,10 @@ include_directories(
 
 catkin_install_python(PROGRAMS 
   script/imu_analysis.py
+  script/PositionControl.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
+
+install(DIRECTORY launch config cfg
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+        PATTERN "*~" EXCLUDE)
