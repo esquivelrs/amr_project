@@ -1,0 +1,31 @@
+<launch>
+    <!-- Flag to start recoding a rosbag  -->
+    <arg name="gui" default="false"/>
+    <arg name="scenario" default="default"/>
+
+    <!-- Initial position and heading of the vehicle (wrt Gazebo's inertial frame)  -->
+    <arg name="x" default="0"/>
+    <arg name="y" default="0"/>
+    <arg name="z" default="-23.0"/>
+    <arg name="yaw" default="0.0"/>
+
+    <arg name="use_ned_frame" default="true"/>
+
+
+
+    <node name="reprocess_oculus_raw_data" pkg="oculus_sonar_driver" type="reprocess_oculus_raw_data" output="screen">
+        <remap from="reprocess_oculus_raw_data/raw_data" to="oculus/raw_data" />
+        <remap from="reprocess_oculus_raw_data/sonar_image" to="sonar_image" />
+    </node>
+
+    <node name="draw_sonar_node" pkg="sonar_image_proc" type="draw_sonar_node" output="screen" />
+
+    <node name="sonar_pointcloud" pkg="sonar_image_proc" type="sonar_pointcloud.py" output="screen">
+        <param name="frame_id" value="map" />
+        <param name="threshold" value="0.5" />
+    </node>
+    
+    <!-- Start RViz  -->
+    <node name="rviz" pkg="rviz" type="rviz" output="screen"  args="-d $(find amr_prj)/rviz/bluerov2_rosbag.rviz"/>
+    
+</launch>

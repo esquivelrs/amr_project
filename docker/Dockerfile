@@ -28,10 +28,13 @@ RUN apt-get update && apt-get install -y \
   ros-${ROS_DISTRO}-geographic-msgs \
   ros-${ROS_DISTRO}-costmap-2d \
   ros-${ROS_DISTRO}-octomap-msgs \
+  ros-${ROS_DISTRO}-genmypy \
+  ros-${ROS_DISTRO}-cv-bridge \
+  ros-${ROS_DISTRO}-vision-opencv \
   ros-${ROS_DISTRO}-mavros && \
   rm -rf /var/lib/apt/lists/*
 
-RUN python3 -m pip install --user scipy
+RUN python3 -m pip install --user ultralytics scipy numpy matplotlib 
 
 # Create Catkin workspace 
 RUN mkdir -p /underlay_ws/src 
