@@ -5,3 +5,4 @@ dev_packages/
 amr_repo/*
 rosbasgs/*
 *.bag
+*rosbag*
