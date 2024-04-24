@@ -24,6 +24,8 @@
         <param name="frame_id" value="map" />
         <param name="threshold" value="0.5" />
     </node>
+
+    <node name="republish" type="republish" pkg="image_transport" output="screen" args="compressed in:=/oak_d_lite/rgb/image_color raw out:=/image_decompressed _image_transport:=h265"/>
     
     <!-- Start RViz  -->
     <node name="rviz" pkg="rviz" type="rviz" output="screen"  args="-d $(find amr_prj)/rviz/bluerov2_rosbag.rviz"/>
