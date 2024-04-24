@@ -3,4 +3,4 @@
 **/__pycache__/
 dev_packages/
 amr_repo/*
-rosbasgs/
+rosbasgs/*
