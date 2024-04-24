@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="amr_prj" type="PositionControl.py" name="position_control"
+          output="screen">
+    </node>
+</launch>
