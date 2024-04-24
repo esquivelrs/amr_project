@@ -42,6 +42,8 @@ class SegmentationNode:
         #print ranges
         #print(data.ranges)
         # get the min range
+        # TODO: get from sonar
+        
         self.sonar_dist = min(data.ranges)
 
         rospy.loginfo(f'sonar min: {self.sonar_dist}')
@@ -62,9 +64,6 @@ class SegmentationNode:
             mask = cv2.inRange(cv_image_resized, lower_mask, upper_mask)
             cv_image_filtered = cv2.bitwise_and(cv_image_resized, cv_image_resized, mask=mask)
 
-            # cv2.imshow("filtered", cv_image_filtered)
-            
-
             gray = cv2.cvtColor(cv_image_filtered, cv2.COLOR_BGR2GRAY)
             ret, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 
@@ -83,48 +82,29 @@ class SegmentationNode:
                 # draw center
                 cv2.circle(cv_image_resized, (int(y_center), int(x_center)), 10, (0, 0, 255), -1)
                 
-            
-            # edges = cv2.Canny(thresh, 50, 150, apertureSize=3)
+                x = x - cv_image_resized.shape[1] // 2
+                y = y - cv_image_resized.shape[0] // 2
 
-            # circles = cv2.HoughCircles(edges, cv2.HOUGH_GRADIENT, 1, 1100, param1=150, param2=5, minRadius=30, maxRadius=0)
-            # if circles is not None:
-            #     circles = circles[0]
-            #     for circle in circles:
-            #         x, y, r = circle
-            #         cv2.circle(cv_image_resized, (x, y), r, (0, 255, 0), 4)
+                # Calculate the distance to the ball
+                # z = self.BALL_RADIUS * self.FOCAL_LENGTH / r
+                dist = self.sonar_dist
 
-            # if circles is not None and len(circles) == 1:
-            #     x, y, r = circles[0]
-            #     # x and y with respect to the center of the image
-            #     x = x - cv_image_resized.shape[1] // 2
-            #     y = y - cv_image_resized.shape[0] // 2
+                # x and y in meters
+                x_center = x_center * dist / self.FOCAL_LENGTH
+                y_center = y_center * dist / self.FOCAL_LENGTH
 
-            #     # Calculate the distance to the ball
-            #     # z = self.BALL_RADIUS * self.FOCAL_LENGTH / r
-            #     if self.sonar_dist:
-            #         dist = self.sonar_dist
-            #     else:
-            #         dist = 1.0
+                #rospy.loginfo(f'Calculated values: x={x}, y={y}, z={z}')
 
+                # Create a Point message
+                circle_msg = Point()
 
+                # Set the values
+                circle_msg.x = self.circle_x_filter.update(dist)
+                circle_msg.y = self.circle_y_filter.update(-x_center)
+                circle_msg.z = self.circle_r_filter.update(-y_center)
 
-
-            #     # x and y in meters
-            #     x = x * dist / self.FOCAL_LENGTH
-            #     y = y * dist / self.FOCAL_LENGTH
-
-            #     #rospy.loginfo(f'Calculated values: x={x}, y={y}, z={z}')
-
-            #     # Create a Point message
-            #     circle_msg = Point()
-
-            #     # Set the values
-            #     circle_msg.x = self.circle_x_filter.update(dist)
-            #     circle_msg.y = self.circle_y_filter.update(-x)
-            #     circle_msg.z = self.circle_r_filter.update(-y)
-
-            #     # Publish the message
-            #     self.circle_pub.publish(circle_msg)
+                # Publish the message
+                self.circle_pub.publish(circle_msg)
 
             cv2.imshow("image", cv_image_resized)
             cv2.waitKey(1)
