@@ -50,6 +50,8 @@ Final project for course 34763 Autonomous Marine Robotics
     conda install -c conda-forge jupyterlab=4.0.7 notebook=7.0.6
     pip install -r dev_requirements.txt
     ```
+2. Download the rosbag and save it in rosbags/
+
 
 ## Docker (How to run docker environment)
 
@@ -99,6 +101,11 @@ roslaunch amr_prj run.launch
 roslaunch uuv_teleop uuv_keyboard_teleop.launch uuv_name:=bluerov2
 roslaunch uuv_teleop uuv_keyboard_teleop.launch uuv_name:=ooi
 ```
+
+
+
+
+
 
 ## Link to Sonar DATA (from Rémi's project) - to be replaced when the new data is available
 [Access Sonar Data](https://drive.google.com/drive/folders/1JQMv0sOH7oyDTCpV-CZUSkLZOMGEsucZ?usp=sharing)
