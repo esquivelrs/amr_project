@@ -1,6 +1,6 @@
 <launch>
     <node pkg="segmentation" type="segmentation_node.py" name="segmentation_node" output="screen">
-        <param name="lower_mask" value="[120, 160, 0]" type="str"/>
-        <param name="upper_mask" value="[180, 200, 5]" type="str"/>
+        <param name="lower_mask" value="[0, 0, 0]" type="str"/>
+        <param name="upper_mask" value="[90, 255, 213]" type="str"/>
     </node>
 </launch>

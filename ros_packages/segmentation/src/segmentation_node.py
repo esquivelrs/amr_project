@@ -61,16 +61,22 @@ class SegmentationNode:
             cv_image = br.imgmsg_to_cv2(image, desired_encoding="bgr8")
             cv_image_resized = cv2.resize(cv_image, (cv_image.shape[1]//2, cv_image.shape[0]//2))
 
-            mask = cv2.inRange(cv_image_resized, lower_mask, upper_mask)
-            cv_image_filtered = cv2.bitwise_and(cv_image_resized, cv_image_resized, mask=mask)
+            # turn to hsv
+            cv_image_resized_hsv = cv2.cvtColor(cv_image_resized, cv2.COLOR_BGR2HSV)
+            cv2.imshow("image_or", cv_image_resized)
+
+            mask = cv2.inRange(cv_image_resized_hsv, lower_mask, upper_mask)
+            cv_image_filtered = cv2.bitwise_and(cv_image_resized_hsv, cv_image_resized_hsv, mask=mask)
 
             gray = cv2.cvtColor(cv_image_filtered, cv2.COLOR_BGR2GRAY)
             ret, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 
             kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
             thresh = cv2.erode(thresh, kernel)
-            kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (20, 20))
+            kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
             thresh = cv2.dilate(thresh, kernel)
+
+            cv2.imshow("image_bin", thresh)
 
             # find center of all pixels
             x, y = np.where(thresh == 255)
@@ -80,7 +86,7 @@ class SegmentationNode:
                 y_center = np.mean(y)
 
                 # draw center
-                cv2.circle(cv_image_resized, (int(y_center), int(x_center)), 10, (0, 0, 255), -1)
+                # cv2.circle(cv_image_resized, (int(y_center), int(x_center)), 10, (0, 0, 255), -1)
                 
                 x = x - cv_image_resized.shape[1] // 2
                 y = y - cv_image_resized.shape[0] // 2
@@ -105,6 +111,14 @@ class SegmentationNode:
 
                 # Publish the message
                 self.circle_pub.publish(circle_msg)
+
+            # find blob and draw bounding box
+            contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            # find biggest contour
+            if len(contours) > 0:
+                max_contour = max(contours, key=cv2.contourArea)
+                x, y, w, h = cv2.boundingRect(max_contour)
+                cv2.rectangle(cv_image_resized, (x, y), (x+w, y+h), (0, 0, 255), 2)
 
             cv2.imshow("image", cv_image_resized)
             cv2.waitKey(1)
