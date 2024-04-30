@@ -102,10 +102,38 @@ roslaunch uuv_teleop uuv_keyboard_teleop.launch uuv_name:=bluerov2
 roslaunch uuv_teleop uuv_keyboard_teleop.launch uuv_name:=ooi
 ```
 
+## Execute the PID control to maintain the possition
+`rosrun amr_prj PositionControl.py`
 
 
+## Offset setpoint:
+The setpoint by default is 1.0, but it can be adjusted by running 
+`rostopic pub /iio_offset std_msgs/Float64 "data: 1.5"`
 
 
 
 ## Link to Sonar DATA (from Rémi's project) - to be replaced when the new data is available
 [Access Sonar Data](https://drive.google.com/drive/folders/1JQMv0sOH7oyDTCpV-CZUSkLZOMGEsucZ?usp=sharing)
+
+
+
+
+rostopic pub /iio_offset geometry_msgs/Point "x: 2.5
+y: 0.0
+z: 0.0" -r 10
+
+rostopic pub /iio_offset geometry_msgs/Point "x: 1.5
+y: 0.2
+z: 0.0" -r 10
+
+rostopic pub /iio_offset geometry_msgs/Point "x: 1.0
+y: 0.0
+z: 0.0" -r 10
+
+rostopic pub /iio_offset geometry_msgs/Point "x: 1.5
+y: 0.0
+z: 0.0" -r 10
+
+rostopic pub /iio_offset geometry_msgs/Point "x: 1.0
+y: 0.0
+z: 0.1" -r 10

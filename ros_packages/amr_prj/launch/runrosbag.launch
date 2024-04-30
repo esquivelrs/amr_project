@@ -24,6 +24,9 @@
         <param name="frame_id" value="map" />
         <param name="threshold" value="0.5" />
     </node>
+
+
+    <node pkg="point_cloud_proc" type="process_pcl.py" name="process_pcl" output="screen"/>
     
     <!-- Start RViz  -->
     <node name="rviz" pkg="rviz" type="rviz" output="screen"  args="-d $(find amr_prj)/rviz/bluerov2_rosbag.rviz"/>
